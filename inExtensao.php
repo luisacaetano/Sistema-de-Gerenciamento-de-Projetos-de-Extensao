@@ -1,0 +1,40 @@
+<?php 
+	include_once("conn.php");
+
+	$nomeProjeto=$_POST['nomeProjeto'];
+	$categoria=$_POST['categoria']; 
+	$acao=$_POST['acao'];
+	$dataInicio=$_POST['dataInicio']; 
+	$previsaoTermino=$_POST['previsaoTermino']; 
+	$qtdvagas=$_POST['qtdvagas']; 
+	$vagasExterno=$_POST['vagasExterno']; 
+	$associado=$_POST['associado']; 
+	$associadoResp=$_POST['associadoResp']; 
+	$areaTematica=$_POST['areaTematica']; 
+	$linhaExtensao=$_POST['linhaExtensao']; 
+	$ods=$_POST['ods'];
+	$cargaHoraria=$_POST['cargaHoraria']; 
+	$orientador=$_POST['orientador']; 
+	$coorientador=$_POST['coorientador']; 
+	$resumo=$_POST['resumo']; 
+	$introducao=$_POST['introducao']; 
+	$objetivoGeral=$_POST['objetivoGeral']; 
+	$objetivoEspecifico=$_POST['objetivoEspecifico']; 
+	$justificativa=$_POST['justificativa']; 
+	$impactos=$_POST['impactos'];
+	$publicoAlvo=$_POST['publicoAlvo'];
+	$materiais=$_POST['materiais']; 
+	$cronograma=$_POST['cronograma'];
+	$acompanhamento=$_POST['acompanhamento'];
+	$responsaveis=$_POST['responsaveis'];
+	$estado=$_POST['estado']; 
+	$cidade=$_POST['cidade']; 
+	$dataAtual=$_POST['dataAtual']; 
+	$nomeImagem=$_FILES['arquivo']['name'];
+	$temp=$_FILES['arquivo']['tmp_name']; 
+	$sql="INSERT INTO extensao (NOMEPROJETO, CATEGORIA, ACAO, DATAINICIO, PREVISAOTERMINO, QTDVAGAS, VAGASEXTERNO, ASSOCIADO, ASSOCIADORESP, AREATEMATICA, LINHAEXTENSAO, ODS, CARGAHORARIA, ORIENTADOR, COORIENTADOR, RESUMO, INTRODUCAO, OBJETIVOGERAL, OBJETIVOESPECIFICO, JUSTIFICATIVA, IMPACTOS, PUBLICOALVO, MATERIAIS, CRONOGRAMA, ACOMPANHAMENTO, RESPONSAVEIS, ESTADO, CIDADE, DATA, NOMEIMAGEM,  DATAIMAGEM) VALUES ('$nomeProjeto', '$categoria', '$acao', '$dataInicio', '$previsaoTermino', '$qtdvagas', '$vagasExterno', '$associado', '$associadoResp', '$areaTematica', '$linhaExtensao', '$ods', '$cargaHoraria', '$orientador', '$coorientador', '$resumo', '$introducao', '$objetivoGeral', '$objetivoEspecifico', '$justificativa', '$impactos', '$publicoAlvo', '$materiais', '$cronograma', '$acompanhamento', '$responsaveis', '$estado', '$cidade', '$dataAtual', '$nomeImagem', NOW())"; 
+	mysqli_query ($conexao, $sql) or die (mysqli_error($conexao)); 
+	mysqli_close($conexao); 
+	move_uploaded_file($temp, "./img/".$nomeImagem); 
+	header("Location: cadastroParte1.php?msg=sucesso"); 
+?>
